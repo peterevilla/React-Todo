@@ -1,3 +1,11 @@
+
+.app {
+
+    text-align: center;
+    margin-top: 10%;
+}
+
+
 .task {
 
     color: black;
@@ -8,3 +16,5 @@
 
     text-decoration: line-through;
 }
+
+
