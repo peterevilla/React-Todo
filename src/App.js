@@ -1,8 +1,11 @@
 import React from 'react';
-import data from './data'
+import data from './data';
 import TodoList from './components/TodoList';
 import TodoForm from "./components/TodoForm";
 import "./components/Todo.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 class App extends React.Component {
   constructor() {
@@ -29,6 +32,17 @@ class App extends React.Component {
 
       ]
     })
+  }
+
+
+  deleteTask = del => {
+
+    this.setState({
+      data: this.state.data.filter(item => {
+        return !item.completed;
+      })
+    });
+
   }
 
   toggleCompleted = taskId => {
@@ -59,8 +73,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addTask={this.addTask} />
-        <TodoList key={this.state.data.id} data={this.state.data} toggleCompleted={this.toggleCompleted} />
+        <TodoForm addTask={this.addTask} deleteTask={this.deleteTask}/>
+        <TodoList key={this.state.data.id} data={this.state.data} toggleCompleted={this.toggleCompleted}  />
       </div>
     );
   }
